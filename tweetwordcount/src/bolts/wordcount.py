@@ -12,11 +12,7 @@ class WordCounter(Bolt):
     def process(self, tup):
         word = tup.values[0]
 
-        # Write codes to increment the word count in Postgres
-        # Use psycopg to interact with Postgres
-        # Database name: Tcount 
-        # Table name: Tweetwordcount 
-        # you need to create both the database and the table in advance.
+        # connect to database
         conn = psycopg2.connect(database="tcount", user="postgres", password="postgres", host="localhost", port="5432")
 
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
@@ -30,14 +26,13 @@ class WordCounter(Bolt):
         try:
            cur.execute('''CREATE TABLE Tweetwordcount (db_word TEXT PRIMARY KEY, count INT);''')
         except Exception, e:
-           print("Table Tweetwordcount exists")
+           print("Table created")
 
         # Increment the local count
         self.counts[word] += 1
         self.emit([word, self.counts[word]])
 
         #Insert word and count into the database
-        #cur.execute("INSERT INTO Tweetwordcount (db_word,count) VALUES (%s, %s)", (word, self.counts[word]))
 
         cur.execute("SELECT db_word FROM Tweetwordcount WHERE db_word = %s", (word,))
         if cur.fetchone() is not None:
