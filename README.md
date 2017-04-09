@@ -15,7 +15,7 @@ Second, go to tweetscount directory run "sparse run" command and wait for 2 mins
 
 
 
-Third, at service code directory, type "python finalresults (the word you want to search)"
+Third, at service code1 directory, type "python finalresults (the word you want to search)"
 
 
 
