@@ -48,7 +48,7 @@ class WordCounter(Bolt):
 
         # Log the count
         self.log('%s: %d' % (word, self.counts[word]))
-                #Insert word and count into the database
+                
         
 
         cur.execute("SELECT db_word FROM Tweetwordcount WHERE db_word = %s", (word,))
