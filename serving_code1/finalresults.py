@@ -16,6 +16,7 @@ if len(sys.argv) == 1:
     sorted_records = sorted(records, key = lambda records: records[0])
     print(sorted_records)
     for rec in records:
+        print('result')
         print(rec[0], rec[1] )
 elif len(sys.argv) == 2:
     word = str(sys.argv[1])
