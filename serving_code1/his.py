@@ -21,7 +21,7 @@ records = cur.fetchall()
 for rec in records:
     print(rec[0], rec[1] )
 
-
+print("results shows above")
 #Closing cursor and connection
 cur.close()
 conn.close()
