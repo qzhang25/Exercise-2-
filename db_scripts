@@ -1,5 +1,5 @@
 psql -U postgres
 
-create database tcount
+create database tcount;
 
 \c tcount
