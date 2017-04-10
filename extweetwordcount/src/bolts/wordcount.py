@@ -36,7 +36,7 @@ class WordCounter(Bolt):
         self.counts[word] += 1
         self.emit([word, self.counts[word]])
 
-        #Insert word and count into the database
+        #Insert data
         
 
         cur.execute("SELECT db_word FROM Tweetwordcount WHERE db_word = %s", (word,))
@@ -46,7 +46,7 @@ class WordCounter(Bolt):
             cur.execute("INSERT INTO Tweetwordcount (db_word,count) VALUES (%s, %s);", (word, self.counts[word]))
 
 
-        # Log the count - just to see the topology running
+        # Log the count
         self.log('%s: %d' % (word, self.counts[word]))
                 #Insert word and count into the database
         
@@ -58,7 +58,7 @@ class WordCounter(Bolt):
             cur.execute("INSERT INTO Tweetwordcount (db_word,count) VALUES (%s, %s);", (word, self.counts[word]))
 
 
-        # Log the count - just to see the topology running
+        
         self.log('%s: %d' % (word, self.counts[word]))
 
         cur.close()
