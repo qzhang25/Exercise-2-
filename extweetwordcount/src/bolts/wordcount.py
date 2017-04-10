@@ -30,14 +30,14 @@ class WordCounter(Bolt):
         try:
            cur.execute('''CREATE TABLE Tweetwordcount (db_word TEXT PRIMARY KEY, count INT);''')
         except Exception, e:
-           print("Table Tweetwordcount exists")
+           print("Table created")
 
         # Increment the local count
         self.counts[word] += 1
         self.emit([word, self.counts[word]])
 
         #Insert word and count into the database
-        #cur.execute("INSERT INTO Tweetwordcount (db_word,count) VALUES (%s, %s)", (word, self.counts[word]))
+        
 
         cur.execute("SELECT db_word FROM Tweetwordcount WHERE db_word = %s", (word,))
         if cur.fetchone() is not None:
@@ -49,7 +49,7 @@ class WordCounter(Bolt):
         # Log the count - just to see the topology running
         self.log('%s: %d' % (word, self.counts[word]))
                 #Insert word and count into the database
-        #cur.execute("INSERT INTO Tweetwordcount (db_word,count) VALUES (%s, %s)", (word, self.counts[word]))
+        
 
         cur.execute("SELECT db_word FROM Tweetwordcount WHERE db_word = %s", (word,))
         if cur.fetchone() is not None:
