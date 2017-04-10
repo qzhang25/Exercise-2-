@@ -24,7 +24,7 @@ elif len(sys.argv) == 2:
     record = cur.fetchone()
     print(record)
 else:
-    print('usage: python finalresults.py word or python finalresults.py')
+    print('result')
     sys.exit(1)
 
     cur.close()
