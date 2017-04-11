@@ -14,7 +14,7 @@ conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 # Create a cursor 
 cur = conn.cursor()
 
-# get data from Tweetwordcount table   
+# get data at Tweetwordcount table   
 cur.execute("SELECT db_word, count FROM Tweetwordcount WHERE count>= %s and count <=%s", (number1,number2) )
 
 records = cur.fetchall()
