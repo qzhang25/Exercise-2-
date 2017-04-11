@@ -9,7 +9,7 @@ Run Instruction
 
 First, start posgres by typing psql -U postgres and type create database tcount; 
 
-Then type \c tcount
+Make sure you connect to the database. If not,type \c tcount
 
 Second, go to tweetscount directory run "sparse run" command and wait for 2 mins to collect the data and stop the progress by typing Ctrl + C
 
